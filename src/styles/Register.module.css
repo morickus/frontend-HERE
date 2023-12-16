@@ -1,0 +1,27 @@
+.root {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+}
+
+.container {
+    width: 450px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo {
+    margin-top: 50px;
+}
+
+.form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn {
+    width: 100%;
+}
