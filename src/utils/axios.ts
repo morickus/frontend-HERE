@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const instance = axios.create({
   baseURL: process.env.API_URL,
-  headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": process.env.API_URL },
+  headers: { 'Content-Type': 'application/json' },
   withCredentials: true,
   validateStatus: () => true,
 })

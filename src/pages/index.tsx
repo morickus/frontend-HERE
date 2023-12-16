@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import axios from '@/utils/axios'
+import MainLayout from '@/layouts/MainLayout';
 
 const Home = () => {
   const router = useRouter()
@@ -10,21 +11,21 @@ const Home = () => {
       router.push('/login')
     }
 
-    (async () =>{
-      try {
-        const {data} = await axios.get(`/home/`)
-        console.log('data ',data)
-      }
-      catch (e){
-        console.log('not auth ',e)
-      }
-    })()
+    // (async () =>{
+    //   try {
+    //     const {data} = await axios.get(`/home/`)
+    //     console.log('data ',data)
+    //   }
+    //   catch (e){
+    //     console.log('not auth ',e)
+    //   }
+    // })()
   }, [])
 
   return (
-    <div>
+    <MainLayout>
 
-    </div>
+    </MainLayout>
   )
 }
 

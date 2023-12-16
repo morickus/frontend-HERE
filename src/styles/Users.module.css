@@ -1,0 +1,13 @@
+.copy {
+    cursor: pointer;
+    margin-left: 10px;
+    color: var(--blue-color);
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.table__row:nth-child(2n) {
+    background: #F7F7F7;
+}

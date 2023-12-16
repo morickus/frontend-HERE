@@ -20,17 +20,17 @@ export const login = createAsyncThunk(
       console.log(error)
     }
 
-    if (localStorage.getItem('access_token') !== null) {
-      try {
-        const {data} = await axios.get('/home/')
-        console.log('user ',data)
-
-        // router.push('/')
-        return data
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    // if (localStorage.getItem('access_token') !== null) {
+    //   try {
+    //     const {data} = await axios.get('/home/')
+    //     console.log('users ',data)
+    //
+    //     // router.push('/')
+    //     return data
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
   }
 )
 

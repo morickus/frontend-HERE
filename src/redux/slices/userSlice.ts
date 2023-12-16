@@ -19,7 +19,7 @@ export const userSlice = createSlice({
     },
   },
   // extraReducers: {
-  //   // Register user
+  //   // Register users
   //   [registerUser.pending]: (state) => {
   //     state.isLoading = true
   //     state.status = null
@@ -27,14 +27,14 @@ export const userSlice = createSlice({
   //   [registerUser.fulfilled]: (state, action) => {
   //     state.isLoading = false
   //     state.status = action.payload.message
-  //     state.user = action.payload.user
+  //     state.users = action.payload.users
   //     state.token = action.payload.token
   //   },
   //   [registerUser.rejectWithValue]: (state, action) => {
   //     state.status = action.payload.message
   //     state.isLoading = false
   //   },
-  //   // Login user
+  //   // Login users
   //   [loginUser.pending]: (state) => {
   //     state.isLoading = true
   //     state.status = null
@@ -42,7 +42,7 @@ export const userSlice = createSlice({
   //   [loginUser.fulfilled]: (state, action) => {
   //     state.isLoading = false
   //     state.status = action.payload.message
-  //     state.user = action.payload.user
+  //     state.users = action.payload.users
   //     state.token = action.payload.token
   //   },
   //   [loginUser.rejectWithValue]: (state, action) => {
@@ -57,7 +57,7 @@ export const userSlice = createSlice({
   //   [getMe.fulfilled]: (state, action) => {
   //     state.isLoading = false
   //     state.status = null
-  //     state.user = action.payload?.user
+  //     state.users = action.payload?.users
   //     state.token = action.payload?.token
   //   },
   //   [getMe.rejectWithValue]: (state, action) => {

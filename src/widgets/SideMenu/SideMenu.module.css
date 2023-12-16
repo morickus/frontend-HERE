@@ -1,0 +1,40 @@
+.root {
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 280px;
+    position: fixed;
+}
+
+.logo {
+    margin: 45px 45px 41px;
+}
+
+.menu {
+
+}
+
+.menu__item {
+    padding: 21px 45px;
+    display: flex;
+    color: var(--grey-color);
+}
+
+.menu__item:hover {
+    transition: color .3s ease-out;
+    color: var(--blue-color);
+}
+
+.menu__item.active {
+    background: #F1F8FF;
+    color: var(--blue-color);
+    border-right: 10px solid var(--blue-color);
+}
+
+.menu__item .icon {
+    margin-right: 15px;
+}
+
+.menu__item .text {
+    font-size: 20px;
+}
