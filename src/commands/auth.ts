@@ -16,6 +16,8 @@ export const login = createAsyncThunk(
       if (data.access) {
         localStorage.setItem('access_token', data.access)
       }
+
+      // router.push('/')
     } catch (error) {
       console.log(error)
     }
@@ -25,7 +27,7 @@ export const login = createAsyncThunk(
     //     const {data} = await axios.get('/home/')
     //     console.log('users ',data)
     //
-    //     // router.push('/')
+    //
     //     return data
     //   } catch (error) {
     //     console.log(error)

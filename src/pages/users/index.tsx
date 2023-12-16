@@ -6,40 +6,50 @@ import type { ColumnsType } from 'antd/es/table'
 import CopyOutlined from '@ant-design/icons/CopyOutlined'
 import Copy from '@/tools/CopyToClipboard'
 import axios from '@/utils/axios'
+import UsersTableFilter, { arrayRole } from '@/widgets/UsersTableFilter'
+import { getUsers } from '@/commands/users'
+import { useDispatch } from 'react-redux'
+import { ThunkDispatch } from '@reduxjs/toolkit'
+import { useAppDispatch, useAppSelector } from '@/redux/hook'
+import { Role, Sex, User } from '@/redux/slices/usersSlice'
 
-const Users = () => {
-  const [users, setUsers] = useState('')
 
-  useEffect(() => {
-    (async () =>{
-      try{
-        const {data} = await axios.get('/users')
-        setUsers(data)
-      }
-      catch (e){
-        console.log('not auth')
-      }
-    })()
-  }, [])
-
-  console.log('data ',users)
-  return (
-    <MainLayout>
-      <span className='title'>Пользователи</span>
-      <Table columns={columns} dataSource={data} className={styles.table} rowClassName={styles['table__row']} pagination={false} />
-    </MainLayout>
-  )
-}
-
-interface DataType {
-  key: string
+export interface DataType {
+  key: number
   fio: string
   age: number
-  sex: 'М' | 'Ж'
-  address: string
+  sex: Sex
+  city: string
   role?: string
   phone: string
   email?: string
+}
+
+const Users = () => {
+  const dispatch = useAppDispatch()
+  const users = useAppSelector(state => state.users.users)
+  const [data, setData] = useState<DataType[]>([])
+  const [source, setSource] = useState<User[]>([])
+
+  useEffect(() => {
+    setSource(getUsers())
+    // dispatch(getUsers())
+  }, [])
+
+  useEffect(() => {
+    let array: DataType[] = mappingTable(source)
+    setData(array)
+  }, [source])
+
+  return (
+    <MainLayout>
+      <span className='title'>Пользователи</span>
+      <div className={styles['table-wrap']}>
+        <Table columns={columns} dataSource={data} className={styles.table} rowClassName={styles['table__row']} pagination={false} />
+        <UsersTableFilter />
+      </div>
+    </MainLayout>
+  )
 }
 
 const columns: ColumnsType<DataType> = [
@@ -91,54 +101,33 @@ const columns: ColumnsType<DataType> = [
   }
 ]
 
-const data: DataType[] = [
-  {
-    key: '1',
-    fio: 'Шабашвили Баховый Тягович',
-    age: 32,
-    sex: 'М',
-    address: 'Москва',
-    role: 'Frontend',
-    phone: '+7-980-555-35-35',
-    email: 'aaabbbaaa@gmail.com'
-  },
-  {
-    key: '2',
-    fio: 'Баранова Анастасия Адамовна',
-    age: 42,
-    sex: 'Ж',
-    address: 'СПб',
-    role: 'UX/UI',
-    phone: '+7-981-345-67-78',
-    email: 'opyatagaming@list.ru'
-  },
-  {
-    key: '3',
-    fio: 'Нестеров Давид Макарович',
-    age: 32,
-    sex: 'М',
-    address: 'Москва',
-    role: 'Backend',
-    phone: '+7-981-345-67-78'
-  },
-  {
-    key: '4',
-    fio: 'Нестеров Давид Макарович',
-    age: 32,
-    sex: 'М',
-    address: 'Москва',
-    role: 'Backend',
-    phone: '+7-981-345-67-78'
-  },
-  {
-    key: '5',
-    fio: 'Нестеров Давид Макарович',
-    age: 32,
-    sex: 'М',
-    address: 'Москва',
-    role: 'Backend',
-    phone: '+7-981-345-67-78'
-  },
-]
+const mappingTable = (v: User[]) => {
+  return v.map(i => {
+    let sex: Sex
+    switch(i.sex) {
+      case 'male':
+        sex = 'М'
+        break
+      case 'female':
+        sex = 'Ж'
+        break
+      default:
+        sex = '-'
+    }
+
+    let role = arrayRole.find(e => e.value == i.role)?.label
+
+    return {
+      key: i.id,
+      fio: `${i.name} ${i.second} ${i.father}`,
+      age: i.age,
+      sex,
+      city: i.city,
+      role,
+      phone: i.phone,
+      email: i.email,
+    }
+  })
+}
 
 export default Users

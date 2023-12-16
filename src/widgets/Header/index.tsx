@@ -8,8 +8,11 @@ import Input from 'antd/lib/input'
 import Badge from 'antd/lib/badge'
 import Avatar from 'antd/lib/avatar'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Header = () => {
+  const router = useRouter()
+
   const logout = () => {
 
   }
@@ -17,7 +20,7 @@ const Header = () => {
   return (
     <div className={styles.root}>
       <div className={styles.left}>
-        <Input size="large" placeholder="Ищем..." prefix={<SearchOutlined />} className={styles.search} />
+        {router.asPath == '/users' && <Input size="large" placeholder="Ищем..." prefix={<SearchOutlined />} className={styles.search} />}
       </div>
       <div className={styles.right}>
         <Link href="/" className={styles.badge}>

@@ -11,3 +11,7 @@
 .table__row:nth-child(2n) {
     background: #F7F7F7;
 }
+
+.table-wrap {
+    position: relative;
+}

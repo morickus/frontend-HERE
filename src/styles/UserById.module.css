@@ -1,0 +1,133 @@
+.root {
+    gap: 30px;
+    display: flex;
+    padding: 30px;
+    margin-top: 20px;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.tabs {
+    padding-top: 50px;
+}
+
+.tabs__item {
+    width: 230px;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--grey-color);
+    padding: 20px 15px 20px 30px;
+}
+
+.tabs__item.active {
+    background: #F1F8FF;
+    color: var(--blue-color);
+}
+
+.tabs__item:hover {
+    color: var(--blue-color);
+}
+
+.wrap {
+    width: 100%;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--black-color);
+}
+
+.content {
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 2px solid #F8FBFC;
+}
+
+.user {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.user__info span {
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 26px;
+    margin-bottom: 5px;
+    color: var(--black-color);
+}
+
+.user__info p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--grey-color);
+}
+
+.info {
+    display: grid;
+    grid-gap: 26px;
+    margin-top: 10px;
+    padding-left: 120px;
+}
+
+.info__row {
+
+}
+
+.info__label {
+    font-size: 20px;
+    line-height: 26px;
+    margin-right: 10px;
+    color: var(--black-color);
+}
+
+.info__value {
+    font-size: 18px;
+    line-height: 26px;
+    color: var(--grey-color);
+}
+
+.chat {
+    max-width: 750px;
+}
+
+.chat__messages {
+    gap: 10px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.empty {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.input {
+    height: 60px;
+    border: 1px solid #F8FBFC;
+}
+
+.submit {
+    height: 60px;
+}
+
+.chat__message {
+    padding: 4px;
+    color: #FFFFFF;
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10px;
+    background: var(--blue-color);
+}
