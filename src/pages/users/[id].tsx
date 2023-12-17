@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MainLayout from '@/layouts/MainLayout'
 import styles from '@/styles/UserById.module.css'
 import UserOutlined from '@ant-design/icons/UserOutlined'
@@ -7,15 +7,26 @@ import Avatar from 'antd/lib/avatar'
 import Input from 'antd/lib/input'
 import Button from 'antd/lib/button'
 import Space from 'antd/lib/space'
+import { useRouter } from 'next/router'
+import { users } from '../../../data'
+import { User } from '@/redux/slices/usersSlice'
+import { getRole, getSex } from '@/tools'
 
 const UserById = () => {
+  const { query } = useRouter()
+  const [user, setUser] = useState<User>()
   const [tab, setTab] = useState('users')
   const [input, setInput] = useState<string>('')
   const [messages, setMessages] = useState<string[]>([])
 
+  useEffect(() => {
+    let userInfo = users.find(i => i.id == Number(query.id))
+    setUser(userInfo)
+  }, [query.id])
+
   const tabs = [
     {text: 'Пользователь', key: 'users'},
-    {text: 'Статистика', key: 'statistic'},
+    // {text: 'Статистика', key: 'statistic'},
     {text: 'Написать', key: 'chat'},
   ]
 
@@ -45,16 +56,16 @@ const UserById = () => {
             <div className={styles.user}>
               <Avatar size={100} icon={<UserOutlined />} />
               <div className={styles['user__info']}>
-                <span>Андрей Пташкин</span>
-                <p>Аналитик</p>
-                <p>Москва</p>
+                <span>{user?.name} {user?.second}</span>
+                <p>{user?.role && getRole(user?.role)}</p>
+                <p>{user?.city}</p>
               </div>
             </div>
             {tab == 'users' && (
               <div className={styles.info}>
                 <div className={styles['info__row']}>
                   <span className={styles['info__label']}>Пол:</span>
-                  <span className={styles['info__value']}>мужской</span>
+                  <span className={styles['info__value']}>{user?.sex && getSex(user?.sex)}</span>
                 </div>
                 <div className={styles['info__row']}>
                   <span className={styles['info__label']}>Дата рождения:</span>
@@ -62,15 +73,15 @@ const UserById = () => {
                 </div>
                 <div className={styles['info__row']}>
                   <span className={styles['info__label']}>Телефон:</span>
-                  <span className={styles['info__value']}>+7-800-555-35-35</span>
+                  <span className={styles['info__value']}>{user?.phone}</span>
                 </div>
                 <div className={styles['info__row']}>
                   <span className={styles['info__label']}>Эл. почта:</span>
-                  <span className={styles['info__value']}>yanasvazi@gmail.com</span>
+                  <span className={styles['info__value']}>{user?.email}</span>
                 </div>
                 <div className={styles['info__row']}>
                   <span className={styles['info__label']}>Соц. сети:</span>
-                  <span className={styles['info__value']}>@tg</span>
+                  <span className={styles['info__value']}>{user?.tg}</span>
                 </div>
               </div>
             )}

@@ -2,6 +2,7 @@ import axios from '@/utils/axios'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { IRegister } from '@/pages/register'
 import { ILogin } from '@/pages/login'
+import message from 'antd/lib/message'
 
 export const login = createAsyncThunk(
   'loginUser',
@@ -17,9 +18,8 @@ export const login = createAsyncThunk(
         localStorage.setItem('access_token', data.access)
       }
 
-      // router.push('/')
     } catch (error) {
-      console.log(error)
+      message.error(`Ошибка ${error}`)
     }
 
     // if (localStorage.getItem('access_token') !== null) {
@@ -39,23 +39,21 @@ export const login = createAsyncThunk(
 export const register = createAsyncThunk(
   'registerUser',
   async ({username, email, password}: IRegister) => {
-
     try {
       const {data} = await axios.post('/register/', {
         username,
         email,
         password,
       })
-      console.log('data ',data)
 
       if (data.token) {
         localStorage.setItem('access_token', data.access)
+        message.success('Регистрация прошла успешна')
       }
 
-      // router.push('/login')
       return data
     } catch (error) {
-      console.log(error)
+      message.error(`Ошибка ${error}`)
     }
   },
 )

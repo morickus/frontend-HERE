@@ -14,13 +14,14 @@ const Header = () => {
   const router = useRouter()
 
   const logout = () => {
-
+    localStorage.removeItem('access_token')
+    router.push('/login')
   }
 
   return (
     <div className={styles.root}>
       <div className={styles.left}>
-        {router.asPath == '/users' && <Input size="large" placeholder="Ищем..." prefix={<SearchOutlined />} className={styles.search} />}
+        {router.pathname == '/users' && <Input size="large" placeholder="Ищем..." prefix={<SearchOutlined />} className={styles.search} onPressEnter={(v) => router.push(`/users?search=${v.currentTarget.value}`)} />}
       </div>
       <div className={styles.right}>
         <Link href="/" className={styles.badge}>

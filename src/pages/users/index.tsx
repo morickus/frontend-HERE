@@ -11,14 +11,20 @@ import { getUsers } from '@/commands/users'
 import { useDispatch } from 'react-redux'
 import { ThunkDispatch } from '@reduxjs/toolkit'
 import { useAppDispatch, useAppSelector } from '@/redux/hook'
-import { Role, Sex, User } from '@/redux/slices/usersSlice'
+import { User } from '@/redux/slices/usersSlice'
+import Link from 'next/link'
+import { getRole, getSexTable } from '@/tools'
 
+export type tableSex = 'М' | 'Ж' | '-'
 
 export interface DataType {
   key: number
-  fio: string
+  fio: {
+    text: string
+    id: number
+  }
   age: number
-  sex: Sex
+  sex: tableSex
   city: string
   role?: string
   phone: string
@@ -57,7 +63,7 @@ const columns: ColumnsType<DataType> = [
     title: 'ФИО',
     dataIndex: 'fio',
     key: 'fio',
-    render: (text) => <a>{text}</a>,
+    render: (v) => <Link href={`/users/${v.id}`}>{v.text}</Link>,
   },
   {
     title: 'Возраст',
@@ -103,25 +109,16 @@ const columns: ColumnsType<DataType> = [
 
 const mappingTable = (v: User[]) => {
   return v.map(i => {
-    let sex: Sex
-    switch(i.sex) {
-      case 'male':
-        sex = 'М'
-        break
-      case 'female':
-        sex = 'Ж'
-        break
-      default:
-        sex = '-'
-    }
-
-    let role = arrayRole.find(e => e.value == i.role)?.label
+    let role = getRole(i.role)
 
     return {
       key: i.id,
-      fio: `${i.name} ${i.second} ${i.father}`,
+      fio: {
+        text: `${i.name} ${i.second} ${i.father}`,
+        id: i.id
+      },
       age: i.age,
-      sex,
+      sex: getSexTable(i.sex),
       city: i.city,
       role,
       phone: i.phone,

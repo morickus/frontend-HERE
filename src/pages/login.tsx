@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '@/styles/Login.module.css'
@@ -12,6 +12,7 @@ import Input from 'antd/lib/input'
 import { login } from '@/commands/auth'
 import { useDispatch } from 'react-redux'
 import { ThunkDispatch } from '@reduxjs/toolkit'
+import { useRouter } from 'next/navigation'
 
 type FieldType = {
   username?: string
@@ -26,17 +27,24 @@ export interface ILogin {
 }
 
 const Login = () => {
+  const { push } = useRouter()
   const [form] = Form.useForm()
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
+  useEffect(() => {
+    if (localStorage.getItem('access_token') !== null) {
+      push('/')
+    }
+  }, [])
+
   const handleSubmit = (values: ILogin) => {
-    dispatch(login(values))
+    dispatch(login(values)).then(() => push('/'))
   }
 
   return (
     <div className={styles.root}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Добро пожаловать</h1>
+        <h1 className="title">Добро пожаловать</h1>
         <Image
           className={styles.logo}
           src="/logo.png"

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type Role = 'ux-ui' | 'product-manager' | 'project-manager' | 'frontend' | 'backend' | 'fullstack' | 'analyst'
 export type grade = 'senior' | 'middle' | 'junior'
-export type Sex = 'М' | 'Ж' | '-'
+export type Sex = 'female' | 'male' | ''
 
 export type User = {
   id: number
@@ -14,7 +14,7 @@ export type User = {
   city: string
   ava?: string
   role: Role
-  sex: 'female' | 'male' | ''
+  sex: Sex
   phone: string
   age: number
   events_count: number

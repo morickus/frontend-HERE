@@ -1,0 +1,32 @@
+.root {
+    margin-top: 20px;
+    background: #FFF;
+    padding: 33px 56px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgba(163, 163, 163, 0.10);
+}
+
+.title {
+    font-size: 26px;
+    color: var(--black-color);
+}
+
+.wrap-statistic {
+    display: grid;
+    grid-gap: 120px;
+    margin-top: 50px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.label {
+    font-size: 26px;
+    color: var(--black-color);
+}
+
+.value {
+    font-size: 80px;
+    margin-top: 30px;
+    line-height: 100%;
+    letter-spacing: 8px;
+    color: var(--blue-color);
+}

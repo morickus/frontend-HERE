@@ -30,7 +30,7 @@ const SideMenu = () => {
       <nav className={styles.menu}>
         {menu.map((i, index) => (
           <Link key={index} href={i.href}>
-            <div className={`${styles['menu__item']} ${router.asPath == i.href && styles.active}`}>
+            <div className={`${styles['menu__item']} ${router.asPath.split('/')[1] == i.href.split('/')[1] && styles.active}`}>
               <div className={styles.icon}>
                 {i.icon}
                 {/*<Icon name={i.iconActive} fontSize={20} color="white" />*/}
@@ -58,8 +58,8 @@ export const menu = [
     icon: <UserOutlined style={{ fontSize: '24px' }} />
   },
   {
-    text: 'Статистика',
-    href: '/statistic',
+    text: 'Аналитика',
+    href: '/analytics',
     icon: <BarChartOutlined style={{ fontSize: '24px' }} />
   },
   {

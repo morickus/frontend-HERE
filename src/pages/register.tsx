@@ -5,6 +5,7 @@ import styles from '@/styles/Register.module.css'
 import {register} from '@/commands/auth'
 import {useDispatch} from 'react-redux'
 import {ThunkDispatch} from '@reduxjs/toolkit'
+import { useRouter } from 'next/navigation'
 
 // import {Button, Form, Input} from 'antd'
 import Form from 'antd/lib/form'
@@ -25,17 +26,23 @@ export interface IRegister {
 }
 
 const Register = () => {
+  const { push } = useRouter()
   const [form] = Form.useForm()
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
   const handleSubmit = (values: IRegister) => {
     dispatch(register(values))
+      .then((v) => {
+        if (v.payload?.id) {
+          push('/login')
+        }
+      })
   }
 
   return (
     <div className={styles.root}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Регистрация</h1>
+        <h1 className="title">Регистрация</h1>
         <Image
           className={styles.logo}
           src="/logo.png"
