@@ -174,7 +174,60 @@ const Analytics = () => {
               </div>
             </TabPanel>
             <TabPanel>
-              4
+              <div className={stylesHome['wrap-statistic']}>
+                <div>
+                  <span className={stylesHome.label}>Всего отправлено рассылок</span>
+                  <p className={stylesHome.value}>1133</p>
+                </div>
+                <div>
+                  <span className={stylesHome.label}>Отправленные E-mail рассылки</span>
+                  <DonutChart
+                    variant="pie"
+                    className="mt-6"
+                    data={[{name: 'С ответом', count: 18}, {name: 'Без ответа', count: 82}]}
+                    valueFormatter={(count) => `${count}%`}
+                    category="count"
+                    index="name"
+                  />
+                  <br/>
+                  <BarList
+                    data={[{name: 'С ответом', count: 18}, {name: 'Без ответа', count: 82}].map(i => ({name: i.name, value: i.count}))}
+                    valueFormatter={(count: string) => `${count}%`}
+                  />
+                </div>
+                <div>
+                  <span className={stylesHome.label}>Отправленные SMS рассылки</span>
+                  <DonutChart
+                    variant="pie"
+                    className="mt-6"
+                    data={[{name: 'С ответом', count: 32}, {name: 'Без ответа', count: 68}]}
+                    valueFormatter={(count) => `${count}%`}
+                    category="count"
+                    index="name"
+                  />
+                  <br/>
+                  <BarList
+                    data={[{name: 'С ответом', count: 32}, {name: 'Без ответа', count: 68}].map(i => ({name: i.name, value: i.count}))}
+                    valueFormatter={(count: string) => `${count}%`}
+                  />
+                </div>
+                <div>
+                  <span className={stylesHome.label}>Отправленные Messenger рассылки</span>
+                  <DonutChart
+                    variant="pie"
+                    className="mt-6"
+                    data={[{name: 'С ответом', count: 22}, {name: 'Без ответа', count: 78}]}
+                    valueFormatter={(count) => `${count}%`}
+                    category="count"
+                    index="name"
+                  />
+                  <br/>
+                  <BarList
+                    data={[{name: 'С ответом', count: 22}, {name: 'Без ответа', count: 78}].map(i => ({name: i.name, value: i.count}))}
+                    valueFormatter={(count: string) => `${count}%`}
+                  />
+                </div>
+              </div>
             </TabPanel>
           </TabPanels>
         </TabGroup>
