@@ -37,7 +37,7 @@ const Home = () => {
   const roles = arrayRole.map(i => {
     return {
       ...i,
-      roles: data?.roles[i.value] || 0
+      roles: data?.roles && data?.roles[i.value] || 0
     }
   })
 

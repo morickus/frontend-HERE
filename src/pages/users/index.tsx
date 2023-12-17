@@ -6,7 +6,7 @@ import type { ColumnsType } from 'antd/es/table'
 import CopyOutlined from '@ant-design/icons/CopyOutlined'
 import Copy from '@/tools/CopyToClipboard'
 import axios from '@/utils/axios'
-import UsersTableFilter, { arrayRole } from '@/widgets/UsersTableFilter'
+import UsersTableFilter from '@/widgets/UsersTableFilter'
 import { getUsers } from '@/commands/users'
 import { useDispatch } from 'react-redux'
 import { ThunkDispatch } from '@reduxjs/toolkit'
@@ -45,7 +45,7 @@ const Users = () => {
   useEffect(() => {
     (async () =>{
       try {
-        const {data} = await axios.get('/home/')
+        const {data} = await axios.get('/users/')
         console.log('data ',data)
       }
       catch (e){

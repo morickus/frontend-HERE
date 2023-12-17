@@ -27,10 +27,6 @@ const Analytics = () => {
       .then(e => setData(e.data))
   }, [])
 
-  const valueFormatter = (number: number) => {
-    return "$ " + new Intl.NumberFormat("us").format(number).toString();
-  }
-  console.log('data ',data)
   return (
     <MainLayout>
       <span className='title'>Аналитика</span>
@@ -105,7 +101,7 @@ const Analytics = () => {
                         index="date"
                         categories={["SemiAnalysis", "The Pragmatic Engineer"]}
                         colors={["indigo", "cyan"]}
-                        valueFormatter={valueFormatter}
+                        showLegend={false}
                       />
                     </div>
                     <div>
@@ -222,15 +218,14 @@ const Analytics = () => {
                       <DonutChart
                         variant="pie"
                         className="mt-6"
-                        data={[{name: 'С ответом', count: 32}, {name: 'Без ответа', count: 68}]}
+                        data={[{name: 'С ответом', count: data.responded_sms}, {name: 'Без ответа', count: data.sended_sms}]}
                         valueFormatter={(count) => `${count}%`}
                         category="count"
                         index="name"
                       />
                       <br/>
                       <BarList
-                        data={[{name: 'С ответом', count: 32}, {name: 'Без ответа', count: 68}].map(i => ({name: i.name, value: i.count}))}
-                        valueFormatter={(count: string) => `${count}%`}
+                        data={[{name: 'С ответом', count: data.responded_sms}, {name: 'Без ответа', count: data.sended_sms}].map(i => ({name: i.name, value: i.count}))}
                       />
                     </div>
                     <div>
@@ -238,15 +233,14 @@ const Analytics = () => {
                       <DonutChart
                         variant="pie"
                         className="mt-6"
-                        data={[{name: 'С ответом', count: 22}, {name: 'Без ответа', count: 78}]}
+                        data={[{name: 'С ответом', count: data.responded_msg}, {name: 'Без ответа', count: data.sended_msg}]}
                         valueFormatter={(count) => `${count}%`}
                         category="count"
                         index="name"
                       />
                       <br/>
                       <BarList
-                        data={[{name: 'С ответом', count: 22}, {name: 'Без ответа', count: 78}].map(i => ({name: i.name, value: i.count}))}
-                        valueFormatter={(count: string) => `${count}%`}
+                        data={[{name: 'С ответом', count: data.responded_msg}, {name: 'Без ответа', count: data.sended_msg}].map(i => ({name: i.name, value: i.count}))}
                       />
                     </div>
                   </div>
