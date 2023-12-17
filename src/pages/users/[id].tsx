@@ -90,7 +90,7 @@ const UserById = () => {
                 <div className={styles['chat__messages']}>
                   {messages.length ? (
                     messages.map(i => (
-                      <div className={styles['chat__message']}>{i}</div>
+                      <div key={i} className={styles['chat__message']}>{i}</div>
                     ))
                     ) : (
                     <span className={styles.empty}>Нет сообщений</span>

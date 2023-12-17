@@ -107,13 +107,16 @@ const Analytics = () => {
                   <DonutChart
                     variant="pie"
                     className="mt-6"
-                    data={[{name: 'Женский', count: 12}, {name: 'Мужской', count: 20}]}
+                    data={[{name: 'Женский', count: 32}, {name: 'Мужской', count: 68}]}
                     valueFormatter={(count) => `${count}%`}
                     category="count"
                     index="name"
                   />
                   <br/>
-                  <BarList data={roles.map(i => ({name: i.name, value: i.roles}))} />
+                  <BarList
+                    data={[{name: 'Женский', count: 32}, {name: 'Мужской', count: 68}].map(i => ({name: i.name, value: i.count}))}
+                    valueFormatter={(count: string) => `${count}%`}
+                  />
                 </div>
               </div>
             </TabPanel>
