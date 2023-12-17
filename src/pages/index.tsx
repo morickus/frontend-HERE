@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import axios from '@/utils/axios'
+import React from 'react'
 import MainLayout from '@/layouts/MainLayout'
 import styles from '@/styles/Home.module.css'
 import { BarList, DonutChart } from '@tremor/react'

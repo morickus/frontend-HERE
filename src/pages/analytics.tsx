@@ -3,7 +3,7 @@ import MainLayout from '@/layouts/MainLayout'
 import styles from '@/styles/Analytics.module.css'
 import stylesHome from '@/styles/Home.module.css'
 import { AreaChart, BarChart, BarList, DonutChart, Tab, TabGroup, TabList, TabPanel, TabPanels } from '@tremor/react'
-import { roles, events, loyalty, budget, sales, expenses } from '../../data'
+import { roles, events, loyalty, budget, sales, expenses, age, region, traffic } from '../../data'
 
 const Analytics = () => {
   const valueFormatter = (number: number) => {
@@ -62,7 +62,7 @@ const Analytics = () => {
                 <div>
                   <span className={stylesHome.label}>Общий бюджет</span>
                   <p className="mt-8">Статистика недели</p>
-                  <p className="text-3xl font-bold">${budget.map(i => i.amount).reduce((accumulator, currentValue) => accumulator + currentValue, 0,)}</p>
+                  <p className="text-3xl font-bold">{budget.map(i => i.amount).reduce((accumulator, currentValue) => accumulator + currentValue, 0,)}</p>
                   <BarChart
                     className="mt-6"
                     data={budget}
@@ -87,7 +87,7 @@ const Analytics = () => {
                 <div>
                   <span className={stylesHome.label}>Общие затраты</span>
                   <p className="mt-8">Статистика недели</p>
-                  <p className="text-3xl font-bold">${expenses.map(i => i.amount).reduce((accumulator, currentValue) => accumulator + currentValue, 0,)}</p>
+                  <p className="text-3xl font-bold">{expenses.map(i => i.amount).reduce((accumulator, currentValue) => accumulator + currentValue, 0,)}</p>
                   <BarChart
                     className="mt-6"
                     data={expenses}
@@ -116,6 +116,59 @@ const Analytics = () => {
                   <BarList
                     data={[{name: 'Женский', count: 32}, {name: 'Мужской', count: 68}].map(i => ({name: i.name, value: i.count}))}
                     valueFormatter={(count: string) => `${count}%`}
+                  />
+                </div>
+                <div>
+                  <span className={styles.label}>Роли</span>
+                  <DonutChart
+                    className="mt-6"
+                    data={roles}
+                    category="roles"
+                    index="name"
+                  />
+                  <br/>
+                  <BarList data={roles.map(i => ({name: i.name, value: i.roles}))} />
+                </div>
+                <div>
+                  <span className={stylesHome.label}>Трафик аудитории</span>
+                  <DonutChart
+                    variant="pie"
+                    className="mt-6"
+                    data={traffic}
+                    valueFormatter={(count) => `${count}%`}
+                    category="count"
+                    index="name"
+                  />
+                  <br/>
+                  <BarList
+                    data={traffic.map(i => ({name: i.name, value: i.count}))}
+                    valueFormatter={(count: string) => `${count}%`}
+                  />
+                </div>
+                <div>
+                  <span className={stylesHome.label}>Возраст</span>
+                  <BarChart
+                    className="mt-6"
+                    data={age}
+                    index="name"
+                    categories={['age']}
+                    colors={["blue"]}
+                    yAxisWidth={48}
+                    showLegend={false}
+                    maxValue={100}
+                  />
+                </div>
+                <div>
+                  <span className={stylesHome.label}>Регионы</span>
+                  <BarChart
+                    className="mt-6"
+                    data={region}
+                    index="name"
+                    categories={['count']}
+                    colors={["blue"]}
+                    yAxisWidth={48}
+                    showLegend={false}
+                    maxValue={100}
                   />
                 </div>
               </div>

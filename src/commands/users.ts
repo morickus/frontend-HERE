@@ -16,6 +16,5 @@ import { users } from '../../data'
 // )
 
 export const getUsers = () => {
-  console.log('users ',users)
   return users
 }

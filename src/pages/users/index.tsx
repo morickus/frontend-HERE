@@ -43,6 +43,18 @@ const Users = () => {
   }, [])
 
   useEffect(() => {
+    (async () =>{
+      try {
+        const {data} = await axios.get('/home/')
+        console.log('data ',data)
+      }
+      catch (e){
+        console.log('not auth')
+      }
+    })()
+  },[])
+
+  useEffect(() => {
     let array: DataType[] = mappingTable(source)
     setData(array)
   }, [source])

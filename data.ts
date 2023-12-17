@@ -47,6 +47,32 @@ export const budget = [
   {name: 'Su', amount: 300},
 ]
 
+export const age = [
+  {name: 'До 14 лет', age: 5},
+  {name: 'с 14 по 17 лет', age: 13},
+  {name: 'с 18 по 24 лет', age: 23},
+  {name: 'с 25 по 34 лет', age: 43},
+  {name: 'с 35 по 44 лет', age: 21},
+  {name: 'с 45 по 54 лет', age: 10},
+  {name: 'с 55 и старше', age: 6},
+]
+
+export const region = [
+  {name: 'Москва', count: 43},
+  {name: 'СПб', count: 23},
+  {name: 'Новосибирск', count: 5},
+  {name: 'Екатеринбург', count: 21},
+  {name: 'Казань', count: 10},
+  {name: 'Прочие', count: 13},
+]
+
+export const traffic = [
+  {name: 'Telegram', count: 32},
+  {name: 'ВКонтакте', count: 35},
+  {name: 'habr', count: 18},
+  {name: 'Другие', count: 15},
+]
+
 export const sales = [
   {
     date: "Jan 22",
