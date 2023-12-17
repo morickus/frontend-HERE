@@ -1,6 +1,6 @@
-import { arrayRole } from '@/widgets/UsersTableFilter'
 import { Sex } from '@/redux/slices/usersSlice'
 import { tableSex } from '@/pages/users'
+import { arrayRole } from '../../data'
 
 export const getRole = (role: string) => arrayRole.find(e => e.value == role)?.label
 

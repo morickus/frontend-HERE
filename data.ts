@@ -1,4 +1,4 @@
-import { User } from '@/redux/slices/usersSlice'
+import { Role, User } from '@/redux/slices/usersSlice'
 
 export const roles = [
   {name: 'UX/UI дизайнер', roles: 33},
@@ -7,6 +7,15 @@ export const roles = [
   {name: 'Аналитик', roles: 17},
   {name: 'Product-manager', roles: 21},
   {name: 'Fullstack разработчик', roles: 9}
+]
+
+export const arrayRole: Array<{value: Role, label: string}> = [
+  { value: 'ux_ui', label: 'UX/UI дизайнер' },
+  { value: 'product_manager', label: 'Продакт-менеджер' },
+  { value: 'frontend', label: 'Фронтенд' },
+  { value: 'backend', label: 'Бэкенд' },
+  { value: 'fullstack', label: 'Фулл стак' },
+  { value: 'analyst', label: 'Аналитик' },
 ]
 
 export const events = [
@@ -131,7 +140,7 @@ export const users: User[] = [
     age: 42,
     sex: 'female',
     city: 'СПб',
-    role: 'ux-ui',
+    role: 'ux_ui',
     phone: '+7-981-345-67-78',
     email: 'opyatagaming@list.ru',
     events_count: 0,
@@ -146,7 +155,7 @@ export const users: User[] = [
     age: 42,
     sex: 'female',
     city: 'СПб',
-    role: 'ux-ui',
+    role: 'ux_ui',
     phone: '+7-981-345-67-78',
     email: 'opyatagaming@list.ru',
     events_count: 0,
@@ -161,7 +170,7 @@ export const users: User[] = [
     age: 42,
     sex: 'female',
     city: 'СПб',
-    role: 'ux-ui',
+    role: 'ux_ui',
     phone: '+7-981-345-67-78',
     email: 'opyatagaming@list.ru',
     events_count: 0,
@@ -176,7 +185,7 @@ export const users: User[] = [
     age: 42,
     sex: 'female',
     city: 'СПб',
-    role: 'ux-ui',
+    role: 'ux_ui',
     phone: '+7-981-345-67-78',
     email: 'opyatagaming@list.ru',
     events_count: 0,
@@ -191,7 +200,7 @@ export const users: User[] = [
     age: 42,
     sex: 'female',
     city: 'СПб',
-    role: 'ux-ui',
+    role: 'ux_ui',
     phone: '+7-981-345-67-78',
     email: 'opyatagaming@list.ru',
     events_count: 0,
@@ -206,7 +215,7 @@ export const users: User[] = [
     age: 42,
     sex: 'female',
     city: 'СПб',
-    role: 'ux-ui',
+    role: 'ux_ui',
     phone: '+7-981-345-67-78',
     email: 'opyatagaming@list.ru',
     events_count: 0,
@@ -221,7 +230,7 @@ export const users: User[] = [
     age: 42,
     sex: 'female',
     city: 'СПб',
-    role: 'ux-ui',
+    role: 'ux_ui',
     phone: '+7-981-345-67-78',
     email: 'opyatagaming@list.ru',
     events_count: 0,
@@ -236,7 +245,7 @@ export const users: User[] = [
     age: 42,
     sex: 'female',
     city: 'СПб',
-    role: 'ux-ui',
+    role: 'ux_ui',
     phone: '+7-981-345-67-78',
     email: 'opyatagaming@list.ru',
     events_count: 0,
@@ -251,7 +260,7 @@ export const users: User[] = [
     age: 42,
     sex: 'female',
     city: 'СПб',
-    role: 'ux-ui',
+    role: 'ux_ui',
     phone: '+7-981-345-67-78',
     email: 'opyatagaming@list.ru',
     events_count: 0,

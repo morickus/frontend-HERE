@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export type Role = 'ux-ui' | 'product-manager' | 'project-manager' | 'frontend' | 'backend' | 'fullstack' | 'analyst'
+export type Role = 'ux_ui' | 'product_manager' | 'frontend' | 'backend' | 'fullstack' | 'analyst'
 export type grade = 'senior' | 'middle' | 'junior'
 export type Sex = 'female' | 'male' | ''
 

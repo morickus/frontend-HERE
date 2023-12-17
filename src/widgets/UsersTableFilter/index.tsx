@@ -6,7 +6,7 @@ import Button from 'antd/lib/button'
 import Radio from 'antd/lib/radio'
 import Space from 'antd/lib/space'
 import InputNumber from 'antd/lib/input-number'
-import { Role } from '@/redux/slices/usersSlice'
+import { arrayRole } from '../../../data'
 
 const UsersTableFilter = () => {
   const [form] = Form.useForm()
@@ -93,15 +93,5 @@ const UsersTableFilter = () => {
     </div>
   )
 }
-
-export const arrayRole: Array<{value: Role, label: string}> = [
-  { value: 'ux-ui', label: 'UX/UI дизайнер' },
-  { value: 'product-manager', label: 'Продакт-менеджер' },
-  { value: 'project-manager', label: 'Проджект-менеджер' },
-  { value: 'frontend', label: 'Фронтенд' },
-  { value: 'backend', label: 'Бэкенд' },
-  { value: 'fullstack', label: 'Фулл стак' },
-  { value: 'analyst', label: 'Аналитик' },
-]
 
 export default UsersTableFilter
